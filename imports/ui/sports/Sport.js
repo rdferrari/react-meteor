@@ -27,27 +27,32 @@ class Sport extends Component {
     return (
       <li className={sportClassName}>
         <div>
-          <p>
-            {this.props.sport.profile}´s profile: {this.props.sport.title} --{" "}
-            {this.props.sport._id}
-          </p>
+          <div>
+            <p>
+              {this.props.sport.profile}´s profile: {this.props.sport.title} --{" "}
+              {this.props.sport._id} || {this.props.sport.athleteId}
+            </p>
+          </div>
+
+          {this.props.showDeleteButton ? (
+            <button
+              className="delete"
+              onClick={this.deleteThisSport.bind(this)}
+            >
+              delete
+            </button>
+          ) : (
+            ""
+          )}
+
+          {this.props.showPrivateButton ? (
+            <button onClick={this.togglePrivate.bind(this)}>
+              {this.props.sport.private ? "Private" : "Public"}
+            </button>
+          ) : (
+            ""
+          )}
         </div>
-
-        {this.props.showDeleteButton ? (
-          <button className="delete" onClick={this.deleteThisSport.bind(this)}>
-            delete
-          </button>
-        ) : (
-          ""
-        )}
-
-        {this.props.showPrivateButton ? (
-          <button onClick={this.togglePrivate.bind(this)}>
-            {this.props.sport.private ? "Private" : "Public"}
-          </button>
-        ) : (
-          ""
-        )}
       </li>
     );
   }

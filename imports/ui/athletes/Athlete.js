@@ -8,6 +8,7 @@ import { Athletes } from "../../api/athletes.js";
 
 import { Sports } from "../../api/sports";
 import SportInsert from "../sports/SportInsert";
+import SportList from "../sports/SportList";
 
 class Athlete extends Component {
   deleteThisAthlete() {
@@ -26,6 +27,8 @@ class Athlete extends Component {
     const athleteClassName = classnames({
       private: this.props.athlete.private
     });
+
+    const athleteIdFilter = this.props.athlete._id;
 
     return (
       <li className={athleteClassName}>
@@ -54,7 +57,11 @@ class Athlete extends Component {
         ) : (
           ""
         )}
-        <SportInsert athleteId={this.props.athlete._id} />
+        <SportInsert
+          athleteId={this.props.athlete._id}
+          nameAthlete={this.props.athlete.name}
+        />
+        <SportList />
       </li>
     );
   }

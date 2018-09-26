@@ -32,6 +32,7 @@ class SportInsert extends Component {
   render() {
     return (
       <div>
+        <p>What sports {this.props.nameAthlete} do?</p>
         {this.props.currentUser ? (
           <div>
             <input type="text" ref="titleInput" placeholder="New sport" />
